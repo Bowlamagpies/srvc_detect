@@ -1,0 +1,16 @@
+[Unit]
+Description=Reboots the computer if SSH daemon fails
+After=ssh
+requires=ssh
+
+[Service]
+Type=simple
+ExecStart=/etc/srvc_detect/srvc_detect2.sh
+Restart=always
+RestartSec=10
+User=root
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
